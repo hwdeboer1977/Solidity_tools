@@ -1,0 +1,120 @@
+/* General App Styles */
+.App {
+  text-align: center;
+}
+
+.main-layout {
+  display: flex; /* Use Flexbox for layout */
+  flex-wrap: nowrap; /* Prevent wrapping on larger screens */
+  justify-content: space-between; /* Space out sections horizontally */
+  align-items: flex-start; /* Align sections at the top */
+  gap: 20px; /* Add spacing between sections */
+  padding: 20px; /* Add padding around the layout */
+}
+
+/* Section Styles */
+.left-box,
+.center-box,
+.right-box {
+  flex: 1; /* Allow sections to grow equally */
+  max-width: 30%; /* Ensure sections don’t exceed 30% of the width */
+  min-width: 250px; /* Prevent sections from becoming too narrow */
+  padding: 10px;
+  border: 1px solid #ccc; /* Optional: Add a border for separation */
+  border-radius: 5px; /* Optional: Add rounded corners */
+  background-color: #f9f9f9; /* Optional: Add background color */
+  box-sizing: border-box; /* Include padding and border in width */
+  overflow-wrap: break-word; /* Ensure long words wrap */
+}
+
+.left-box {
+  text-align: left;
+}
+
+.center-box {
+  flex: 2; /* Give the center box more space */
+  text-align: center; /* Center-align text inside */
+  margin-left: -52%; /* Shift the center box to the left */
+  max-width: 35%; /* Increase its width slightly */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-sizing: border-box;
+}
+
+.right-box {
+  text-align: right; /* Align text to the right */
+}
+
+.common-input {
+  width: 400px; /* Fixed width for all input boxes */
+  padding: 10px; /* Consistent padding for user comfort */
+  margin-right: 10px; /* Add space to the right for buttons or adjacent elements */
+  border: 1px solid #ccc; /* Add a border for clarity */
+  border-radius: 5px; /* Rounded corners for aesthetics */
+  box-sizing: border-box; /* Ensure padding is included in width calculation */
+  font-size: 14px; /* Ensure consistent font size */
+}
+
+.common-button {
+  padding: 10px 20px; /* Uniform padding */
+  width: 150px; /* Fixed width for all buttons */
+  font-size: 16px; /* Consistent font size */
+  text-align: center; /* Center-align text */
+  border: 1px solid #007bff; /* Optional border */
+  border-radius: 5px; /* Rounded corners */
+  background-color: #007bff; /* Button background color */
+  color: #fff; /* Text color */
+  cursor: pointer; /* Pointer on hover */
+  margin: 10px; /* Add spacing around each button */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.common-button:hover {
+  background-color: #0056b3; /* Darker background on hover */
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 1024px) {
+  .main-layout {
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    justify-content: center; /* Center-align the wrapped sections */
+  }
+
+  .left-box,
+  .center-box,
+  .right-box {
+    max-width: 45%; /* Allow two columns per row */
+    flex: 1 1 45%; /* Dynamically adjust width */
+  }
+}
+
+@media (max-width: 768px) {
+  .main-layout {
+    flex-direction: column; /* Stack sections vertically */
+    align-items: center; /* Center-align stacked sections */
+  }
+
+  .left-box,
+  .center-box,
+  .right-box {
+    max-width: 100%; /* Make sections take full width */
+    text-align: center; /* Center-align text */
+  }
+}
+
+@media (max-width: 480px) {
+  .main-layout {
+    padding: 10px; /* Reduce padding for very small screens */
+    gap: 10px; /* Reduce spacing */
+  }
+
+  .left-box,
+  .center-box,
+  .right-box {
+    padding: 5px; /* Reduce padding inside boxes */
+    font-size: 14px; /* Reduce font size for small screens */
+  }
+}

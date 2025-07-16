@@ -1,0 +1,43 @@
+/* Container for the cards */
+.card {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: left; /* Ensures all text, including the list, aligns to the left */
+  margin: 0 auto; /* Centers the card in the middle of the screen */
+  width: 60%; /* Adjust the width of the card container */
+}
+
+.button-container {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important; /* Force left alignment */
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.action-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: left; /* Align text inside buttons to the left */
+  width: auto; /* Ensure buttons adjust to their content */
+  display: inline-block; /* Prevent buttons from stretching */
+}
+
+.action-button:hover {
+  background-color: #45a049;
+}
+
+/* Style for links */
+a {
+  color: #0073e6;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

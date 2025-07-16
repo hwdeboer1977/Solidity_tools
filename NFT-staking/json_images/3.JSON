@@ -1,0 +1,15 @@
+{
+  "name": "Ajax Logo 3",
+  "description": "One of the many Ajax logos",
+  "image": "ipfs://QmaPKm2pn8qB5bz8UZ1tLcSUvAkrpW58FeP1LY8LG1VckF",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Blue"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "Green"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+/* Container for the cards */
+.card {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card ul {
+  list-style-position: outside; /* Ensures bullets are outside the text block */
+  margin: 0; /* Removes unnecessary margins */
+  padding-left: 40px; /* Aligns the bullets and text with the rest of the content */
+}
+
+.card li {
+  margin-bottom: 8px; /* Adds spacing between list items */
+  text-indent: 0; /* Ensures no additional indentation */
+  line-height: 1.6; /* Improves readability with better line spacing */
+}
+
+.card {
+  text-align: left; /* Ensures all text, including the list, aligns to the left */
+  margin: 0 auto; /* Centers the card in the middle of the screen */
+  width: 60%; /* Adjust the width of the card container */
+}
+
+/* Heading style inside cards */
+.card h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* Button styling */
+.action-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.action-button:hover {
+  background-color: #45a049;
+}
+
+/* Style for links */
+a {
+  color: #0073e6;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  align-items: left; /* Center buttons horizontally */
+  gap: 10px; /* Space between buttons */
+}
+
+.action-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}

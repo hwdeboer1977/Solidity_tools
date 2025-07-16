@@ -1,0 +1,19 @@
+{
+  "name": "assignment_5",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "type": "module",
+  "license": "ISC",
+  "dependencies": {
+    "chart.js": "^3.9.1",
+    "chartjs-node-canvas": "^4.1.6",
+    "cors": "^2.8.5",
+    "ethers": "^5.7.2"
+  }
+}

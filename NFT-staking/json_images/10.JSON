@@ -1,0 +1,15 @@
+{
+  "name": "Dutch team Logo 3",
+  "description": "One of the many Dutch team logos",
+  "image": "ipfs://Qmd1uKhVXoBJSK1mjtB9VArSN2znfB4LNWNPQJ2cAeXqs4",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Blue"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "Green"
+    }
+  ]
+}

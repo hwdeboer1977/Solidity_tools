@@ -1,0 +1,162 @@
+/* General styling for the app */
+.App {
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+/* General styling for the app */
+body {
+  background-color: #d0e7ff; /* Set the background for the entire site */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+}
+
+/* Styling for the header */
+.website-header {
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+}
+
+/* Flexbox container for layout */
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Styling for the left box */
+.left-box {
+  width: 400px;
+  margin: 20px;
+  padding: 20px;
+  background-color: #f1f1f1;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.left-box h1,
+.left-box h2 {
+  text-align: left;
+}
+
+.left-box ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.left-box li {
+  text-align: left;
+  margin: 8px 0;
+}
+
+/* Summary box styling */
+.summary-box {
+  width: 400px;
+  margin: 20px;
+  padding: 20px;
+  background-color: #f1f1f1;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.summary-box h1 {
+  text-align: left;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.item p {
+  margin: 0;
+  flex: 1;
+  text-align: left; /* Align text to the left */
+  font-size: 20px;
+}
+
+.item button {
+  margin-left: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  width: 120px; /* Set a fixed width for the buttons */
+  flex-shrink: 0; /* Prevent the button from shrinking */
+}
+
+.item button:hover {
+  background-color: #0056b3;
+}
+
+/* Styling for warning messages */
+p {
+  /*
+  color: red;
+  font-weight: bold;
+  */
+}
+
+/* Button container */
+.buttons-container {
+  margin-top: 20px;
+}
+
+.buttons-container button {
+  margin: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+.buttons-container button:hover {
+  background-color: #0056b3;
+}
+
+/* Wallet info section */
+/* Wallet info section */
+.wallet-info {
+  margin-top: 10px; /* Reduce the top margin */
+  padding: 8px; /* Reduce the padding inside */
+  background-color: #f1f1f1;
+  border: 1px solid #ddd;
+  border-radius: 6px; /* Slightly smaller border radius */
+  font-size: 0.9rem; /* Reduce the font size slightly */
+}
+
+.wallet-info p {
+  margin: 5px 0;
+}
+
+.nft-collection-link {
+  margin-top: 15px;
+}
+
+.nft-collection-link a {
+  color: #007bff;
+}
+
+.nft-collection-link a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .knight-image {
+    max-width: 70px; /* Adjust size for smaller screens */
+  }
+}
+
+@media (max-width: 400px) {
+  .knight-image {
+    max-width: 50px; /* Further adjustment for very small screens */
+  }
+}

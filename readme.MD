@@ -40,6 +40,10 @@ Utilities for automated task execution on-chain (e.g., time-based actions, upkee
 
 Patterns and examples for upgradeable smart contracts using OpenZeppelin’s Transparent and UUPS proxy standards.
 
+### 🔧 `Vault-contract`
+
+Extended ERC-4626 Vault (deposit, shares, redeem) and admin functions to redistribute funds to other protocols.
+
 ---
 
 > Use these tools as modular building blocks or educational references when developing your own smart contracts.

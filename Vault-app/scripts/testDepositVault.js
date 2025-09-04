@@ -2,11 +2,14 @@
 const { ethers } = require("hardhat");
 const fs = require("fs");
 const path = require("path");
+require("dotenv").config();
 
 // How to use:
 // Make sure Hardhat node is running
 // Make sure to deploy MockWBTC + Vault:
-// Run this test with: npx hardhat run scripts/testVault.js --network localhost
+// Run this test with: npx hardhat run scripts/testDepositVault.js --network localhost
+const RECIPIENT_A = process.env.RECIPIENT_A_ADDRESS;
+const RECIPIENT_B = process.env.RECIPIENT_B_ADDRESS;
 
 async function main() {
   // Load deployment info
@@ -43,6 +46,9 @@ async function main() {
   // Attach contract wBTC
   const MockWBTC = await ethers.getContractFactory("MockWBTC");
   const wbtc = MockWBTC.attach(wbtcAddress);
+
+  // ALWAYS SET RECIPIENTS (OTHERWISE REBALANCING WILL REVERT)
+  const setRecipients = await vault.setRecipients(RECIPIENT_A, RECIPIENT_B);
 
   // Call a simple getter
   const min = await vault.depositMin();

@@ -5,9 +5,10 @@ const path = require("path");
 require("dotenv").config();
 
 // How to use:
-// Make sure Hardhat node is running
-// Make sure to deploy MockWBTC + Vault:
-// Run this test with: npx hardhat run scripts/testDepositVault.js --network localhost
+// 1. Make sure Hardhat node is running:     npx hardhat node
+// 2. Make sure to deploy MockWBTC:          npx hardhat run scripts/deployMockWbtc.js --network localhost
+// 3. Make sure to deploy Vault:             npx hardhat run scripts/deployVault.js --network localhost
+// 4. Run this test with:                    npx hardhat run scripts/testDepositVault.js --network localhost
 const RECIPIENT_A = process.env.RECIPIENT_A_ADDRESS;
 const RECIPIENT_B = process.env.RECIPIENT_B_ADDRESS;
 

@@ -44,6 +44,10 @@ contract Vault is ERC20, ERC4626, Ownable, Pausable, ReentrancyGuard {
     // Net Asset Value (NAV) of assets held off-contract (sum for A+B), in WBTC units (8 decimals).
     uint256 public externalNav;
 
+    // Allow for difference owner and keeper
+    mapping(address => bool) public isKeeper;
+    event KeeperSet(address indexed keeper, bool enabled);
+
     /* ========= Events ========= */
     event DepositCapUpdated(uint256 oldCap, uint256 newCap);
     event DepositMinUpdated(uint256 oldMin, uint256 newMin);
@@ -54,8 +58,8 @@ contract Vault is ERC20, ERC4626, Ownable, Pausable, ReentrancyGuard {
     event RebalanceMinUpdated(uint256 minAmount);
 
     event Rebalanced(uint256 amount, uint256 toA, uint256 toB);
-    event ExternalNavReported(uint256 newNav);
     event Rescued(address indexed token, address indexed to, uint256 amount);
+    event ExternalNavAdjusted(int256 delta, uint256 newNav);
 
     /// @param _wbtc  Address of the WBTC-like underlying (8 decimals).
     /// @param _owner Initial owner (admin).
@@ -71,6 +75,16 @@ contract Vault is ERC20, ERC4626, Ownable, Pausable, ReentrancyGuard {
 
         splitA_BPS = 8500; // 85% to A, 15% to B
         rebalanceMin = 0;  // off by default until set
+    }
+
+    function setKeeper(address keeper, bool enabled) external onlyOwner {
+        isKeeper[keeper] = enabled;
+        emit KeeperSet(keeper, enabled);
+    }
+
+    modifier onlyKeeperOrOwner() {
+        require(isKeeper[msg.sender] || msg.sender == owner(), "not keeper/owner");
+        _;
     }
 
     /// @dev OZ ERC4626 already maps share decimals to the asset's decimals.
@@ -110,6 +124,7 @@ contract Vault is ERC20, ERC4626, Ownable, Pausable, ReentrancyGuard {
 
     // Set wallets A and B
     function setRecipients(address _A, address _B) external onlyOwner {
+        require(_A != address(0) && _B != address(0), "zero recipient");
         recipientA = _A;
         recipientB = _B;
         emit RecipientsUpdated(_A, _B);
@@ -131,11 +146,16 @@ contract Vault is ERC20, ERC4626, Ownable, Pausable, ReentrancyGuard {
 
     // Owner reports new off-chain NAV (in WBTC units, 8 decimals).
     // Call this periodically to reflect PnL from Drift/Hyperliquid legs.
-    function reportExternalNav(uint256 newNav) external onlyOwner {
-        externalNav = newNav;
-        emit ExternalNavReported(newNav);
+    function adjustExternalNav(int256 delta) external onlyKeeperOrOwner {
+        if (delta >= 0) {
+            externalNav += uint256(delta);
+        } else {
+            uint256 abs = uint256(-delta);
+            require(abs <= externalNav, "nav underflow");
+            externalNav -= abs;
+        }
+        emit ExternalNavAdjusted(delta, externalNav);
     }
-
     // Some safety functions
     function pause() external onlyOwner { _pause(); }
     function unpause() external onlyOwner { _unpause(); }
@@ -245,7 +265,7 @@ contract Vault is ERC20, ERC4626, Ownable, Pausable, ReentrancyGuard {
     // Move `amount` WBTC out of the vault to recipients, split by `splitA_BPS`.
     // Keeper chooses the chunk size. Requires >= rebalanceMin and <= idle.
     // We add `amount` to `externalNav` so share price stays stable.
-    function rebalance(uint256 amount) external whenNotPaused nonReentrant {
+    function rebalance(uint256 amount) external whenNotPaused nonReentrant onlyKeeperOrOwner {
         require(recipientA != address(0) && recipientB != address(0), "recipients not set");
         require(amount >= rebalanceMin, "below threshold");
 
